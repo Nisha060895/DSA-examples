@@ -1,0 +1,142 @@
+// Linkedlist implementation in JAVASCRIPT
+// Operations: Insert at first, insert at last, insert at index
+// Operations: Remove first, remove last, remove from index
+// Operations: Get value at index, Print all elements
+
+// Create a LinkedList node which consists of data and next pointer to the next node
+function Node(data) {
+    this.data = data;
+    this.next = null;
+}
+
+// Create LinkedList and add its operations
+function LinkedList() {
+    this.head = null;
+    this.size = 0;
+
+    //Insert node at first
+    this.insertFirst = function (data) {
+        let node = new Node(data);
+        if(!this.head) {
+            this.head = node;
+            this.size++;
+        } else {
+            node.next = this.head;
+            this.head = node;
+            this.size++;
+        }
+    }
+
+    // Insert node at last
+    this.insertLast = function(data) {
+        let node = new Node(data);
+        if(!this.head){
+            this.head = node;
+            this.size++;
+        } else {
+            let current = this.head;
+            while(current.next) {
+                current = current.next;
+            }
+            current.next = node;
+            this.size++;
+        }
+    }
+
+    // Insert node at index
+    this.insertAt = function(data, index) {
+        if(index < 1 || index > this.size - 1) {
+            return;
+        }
+        let node = new Node(data);
+        let current, previous;
+        current = this.head;
+        let count = 0;
+        while(count < index){
+            previous = current;
+            count++;
+            current = current.next;
+        }
+        node.next = current;
+        previous.next = node;
+        this.size++;
+    }
+
+    // Get element at index
+    this.getAt = function (index) {
+        let current = this.head;
+        let count = 0;
+        if (!this.head || (index > this.size - 1)) {
+            return;
+        }
+        while(count < index && current.next) {
+            current = current.next;
+            count++;
+        }
+        console.log(current.data);
+    }
+
+    // Remove first node
+    this.removeFirst = function() {
+        let current = this.head;
+        this.head = current.next;
+        this.size--;
+    }
+
+    // Remove last node
+    this.removeLast = function() {
+        let current = this.head;
+        let count = 0;
+        while(count < this.size - 2){
+            current = current.next;
+            count++;
+        }
+        current.next = null;
+        this.size--;
+    }
+
+    // Remove node at index
+    this.removeAt = function(index) {
+        let current = this.head;
+        let previous = new Node();
+        let count = 0;
+        if(index == 0) {
+            this.removeFirst();
+            return;
+        }
+        if(index === this.size - 1) {
+            this.removeLast();
+            return;
+        }
+        while(count < index) {
+            previous = current;
+            count++;
+            current = current.next;
+        }
+        previous.next = current.next;
+        this.size--;
+    }
+
+    // Traverse Linked List / Print elements of LL
+    this.printElements = function() {
+        let current = this.head;
+        while(current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
+}
+
+// Perform all operations
+let li = new LinkedList();
+
+li.insertFirst(100);
+li.insertLast(200);
+li.insertLast(300);
+li.insertAt(400, 2);
+
+li.printElements();
+
+li.removeAt(0);
+
+li.printElements();
