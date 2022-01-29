@@ -116,6 +116,22 @@ function LinkedList() {
         previous.next = current.next;
         this.size--;
     }
+    
+    // Reverse a LinkedList
+    this.reverseList = function () {
+        let current = this.head;
+        let previous = null, next;
+        next = this.head;
+      
+       while(next) {
+           next = current.next;
+           current.next = previous;
+           previous = current;
+           current = next;
+       }
+      this.head = previous;
+      this.printElements();
+    }
 
     // Traverse Linked List / Print elements of LL
     this.printElements = function() {
