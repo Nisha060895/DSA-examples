@@ -1,0 +1,40 @@
+// STACK implementation using Linkedlist
+// All operations will be performed from head
+
+var head = null;
+let size = 0;
+
+// Linkedlist node
+function node(value = null, next = null){
+    this.value = value;
+    this.next = next;
+}
+
+// Add node
+function push(value) {
+    let newNode = new node(value);
+    if (this.head === null){
+        this.head = newNode;
+    } else {
+        newNode.next = this.head;
+        this.head = newNode;
+    }
+}
+
+// Traverse through elements
+function traverse() {
+    let headNode = this.head;
+    console.log('elements:');
+    while(headNode){
+        console.log(headNode.value);
+        headNode = headNode.next;
+        size++;
+    }
+    console.log('size:', size);
+}
+
+push(2);
+push(3);
+push(33);
+push(23);
+traverse();
