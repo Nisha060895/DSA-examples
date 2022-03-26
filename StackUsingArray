@@ -1,0 +1,50 @@
+// STACK implementation using ARRAY
+const n = 5;
+let stack = new Array(n);
+var topVal = -1;
+
+// Push element in the stack
+function push(x) {
+    if (topVal === n - 1) {
+        console.log('overflow');
+    } else {
+        topVal++;
+        stack[topVal] = x;
+    }
+}
+
+// Pop top element from the stack
+function pop() {
+    if (topVal === -1) {
+        console.log('underflow');
+    } else {
+        console.log(stack[topVal]);
+        topVal--;
+    }
+}
+
+// Peek top element
+function peek() {
+      if (topVal === -1) {
+        console.log('underflow');
+    } else {
+        console.log(stack[topVal]);
+    }
+}
+
+// Traverse through stack elements
+function traverse() {
+        for (let i= topVal; i >= 0; i--) {
+            console.log(stack[i] + ' ');
+        }  
+}
+
+// Operations
+traverse(); //nothing
+push(2); // add 2
+push(3); // add 3
+peek(); // return value 3
+traverse(); // print 3 2
+pop(); // removes 3
+pop(); // removes 2
+pop(); // no more elements, so prints underflow
