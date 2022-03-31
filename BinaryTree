@@ -1,0 +1,21 @@
+// Binary tree implementation using javascript
+function node(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+}
+
+// Create tree using user input
+function createTree(prompttext) {
+    let value = window.prompt(prompttext);
+    if (!parseInt(value)) {
+        return null;
+    }
+    let newNode = new node(value);
+    newNode.left = this.createTree(`enter left child of ${value}`);
+    newNode.right = this.createTree(`enter right child of ${value}`);
+    return newNode;
+}
+
+// print whole tree
+console.log(createTree('enter root value'));
