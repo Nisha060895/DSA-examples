@@ -1,0 +1,62 @@
+// Binary tree implementation
+function node(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+}
+
+// Create tree using user input
+function createTree(prompttext) {
+    let value = window.prompt(prompttext);
+    if (!parseInt(value)) {
+        return null;
+    }
+    let newNode = new node(value);
+    newNode.left = this.createTree(`enter left child of ${value}`);
+    newNode.right = this.createTree(`enter right child of ${value}`);
+    return newNode;
+}
+
+this.root = createTree('enter root value');
+console.log("Tree created", this.root);
+
+this.preOrderString = '';
+this.inOrderString = '';
+this.postOrderString = '';
+preOrderTraversal(this.root);
+inOrderTraversal(this.root);
+postOrderTraversal(this.root);
+console.log('preOrderString', this.preOrderString, 'Inorder', this.inOrderString, 'postOrderString', postOrderString);
+
+// Tree traversals - Preorder - Root->Left->Right
+function preOrderTraversal(rootNode) {
+    if (rootNode) {
+        this.preOrderString +=rootNode.value;
+        this.preOrderTraversal(rootNode.left);
+        this.preOrderTraversal(rootNode.right);
+    } else {
+        return;
+    }
+}
+
+// Tree traversals - Inorder - Left->Root->Right
+function inOrderTraversal(rootNode) {
+    if (rootNode) {
+        this.inOrderTraversal(rootNode.left);
+        this.inOrderString +=rootNode.value;
+        this.inOrderTraversal(rootNode.right);
+    } else {
+        return;
+    }
+}
+
+// Tree traversals - Postorder - Left->Right->Root
+function postOrderTraversal(rootNode) {
+    if (rootNode) {
+        this.postOrderTraversal(rootNode.left);
+        this.postOrderTraversal(rootNode.right);
+        this.postOrderString +=rootNode.value;
+    } else {
+        return;
+    }
+}
