@@ -1,0 +1,21 @@
+// Insertion sort implementation using javascript
+// Worst case time complexity - O(n^2)
+// Best/Avg case time complexity - O(n)
+
+// Assume left most element is part of sorted array
+// and array subpart from 1 to n is unsorted array
+function sortArray(a) {
+   for (i = 1; i < a.length; i++) {
+      let temp = a[i];
+      j = i - 1;
+      // compare temp with elements in sorted array and shift to the right
+      while(j  >= 0 && a[j] > temp){
+         a[j + 1] = a[j];
+         j--;
+      }
+      a[j + 1] = temp;
+   }
+   console.log(a);
+}
+
+sortArray([5,4,10,1,6,2]);
