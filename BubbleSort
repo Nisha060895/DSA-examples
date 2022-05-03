@@ -1,0 +1,24 @@
+// Bubble sort implementation using javascript
+// Worst case time complexity - O(n^2)
+// Best/Avg case time complexity - O(n)
+
+function sortArray(a) {
+   for (let  i = 0; i < a.length - 1; i++) {
+   // Break loop early if array is already sorted
+      let flag = 0;
+      for (let j = 0; j < a.length -1-i; j++) {
+         if (a[j] > a[j+1]) {
+            let temp = a[j];
+            a[j] = a[j+1];
+            a[j+1] = temp;
+            flag = 1;
+         }
+      }
+      if (flag == 0) {
+         break;
+      }
+   }
+    console.log(a);
+}
+
+sortArray([14,2,3,21,30]);
