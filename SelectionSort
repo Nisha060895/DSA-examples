@@ -1,0 +1,27 @@
+// Selection sort implementation using javascript
+// Worst case time complexity - O(n^2)
+// Best/Avg case time complexity - O(n^2)
+
+//Assume whole array as unsorted sublist
+function sortArray(a) {
+   for (let i = 0; i < a.length; i++) {
+   // Assume index i is the min value index
+      let min = i;
+      for (let j = i + 1; j < a.length; j++) {
+      // Compare min index value with new value and replace
+         if (a[min] > a[j]) {
+            min = j;
+         }
+      }
+      // Swap elements
+      // Each iteration will put smallest element on the left sublist - making it sorted
+      if (min !== i) {
+         temp = a[min];
+         a[min] = a[i];
+         a[i] = temp;
+      }
+   }
+   console.log(a);
+}
+
+sortArray([5,4,10,-1,6,2]);
