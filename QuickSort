@@ -1,0 +1,39 @@
+// Quick sort implementation using javascript
+// Use partitioning mechanism to get right position of the pivot element
+// Worst case time complexity - O(n^2)
+// Best/Avg case time complexity - O(nlogn)
+
+let arrayVal = [5,4,10,-6,6,2];
+
+function quickSort(a, lb, ub) {
+  if (lb < ub) {
+     const loc = partition(a, lb, ub);
+     quickSort(a, lb, loc - 1);
+     quickSort(a, loc + 1, ub);
+  }
+  return a;
+}
+
+function partition(a, lb, ub) {
+   let start = lb;
+   let end = ub;
+   let pivot = a[lb];
+   while (start < end) {
+      while(pivot >= a[start]) {
+         start++;
+      } 
+      while(pivot < a[end]) {
+         end--;
+      }
+      if (start < end) {
+         let temp = a[start];
+         a[start] = a[end];
+         a[end] = temp;
+      }
+   }
+   a[lb] = a[end];
+   a[end] = pivot;
+   return end;
+}
+
+console.log(quickSort(arrayVal, 0, arrayVal.length - 1));
